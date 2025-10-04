@@ -23,6 +23,31 @@
             .view-content { display: block !important; page-break-after: always; }
             body { background: white !important; }
         }
+        
+        /* Enhanced Mobile Optimizations */
+        @media (max-width: 768px) {
+            .mobile-large-text { font-size: 1.1rem; line-height: 1.6; }
+            .mobile-touch-target { min-height: 48px; padding: 12px 16px; }
+            .mobile-simplified { display: none; }
+            .mobile-spacing { margin-bottom: 1.5rem; }
+            .mobile-card-padding { padding: 1rem; }
+            
+            /* Optimize SVG text for mobile readability */
+            svg text { font-size: 13px !important; }
+            svg text[font-size="10"] { font-size: 12px !important; }
+            svg text[font-size="9"] { font-size: 11px !important; }
+        }
+        
+        /* Touch gestures and interactions */
+        .swipe-hint {
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            animation: swipeHint 3s infinite;
+        }
+        
+        @keyframes swipeHint {
+            0%, 100% { transform: translateX(-100%); opacity: 0; }
+            50% { transform: translateX(0); opacity: 1; }
+        }
         .gradient-bg {
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
         }
@@ -77,37 +102,42 @@
             
             <!-- View Selector -->
             <div class="flex flex-col sm:flex-row gap-3 mb-6">
-                <div class="flex gap-3 flex-wrap flex-1">
+                <div class="flex gap-2 sm:gap-3 flex-wrap flex-1">
                     <button onclick="showView('floor')" id="btn-floor" 
-                            class="px-4 py-2 rounded-lg font-medium transition-colors bg-gray-200 text-gray-700 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                            class="flex-1 sm:flex-none px-3 sm:px-4 py-3 sm:py-2 rounded-lg font-medium transition-colors bg-gray-200 text-gray-700 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mobile-touch-target text-sm sm:text-base"
                             aria-label="View floor plan diagram"
                             role="tab">
-                        📐 Floor Plan
+                        <span class="hidden sm:inline">📐 </span>Floor Plan
                     </button>
                     <button onclick="showView('left-wall')" id="btn-left-wall" 
-                            class="px-4 py-2 rounded-lg font-medium transition-colors bg-blue-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                            class="flex-1 sm:flex-none px-3 sm:px-4 py-3 sm:py-2 rounded-lg font-medium transition-colors bg-blue-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mobile-touch-target text-sm sm:text-base"
                             aria-label="View left wall design with shoes and jewelry storage"
                             role="tab">
-                        👈 Left Wall
-                    </button>
+                        <span class="hidden sm:inline">👈 </span>Left Wall
+                </button>
                     <button onclick="showView('right-wall')" id="btn-right-wall" 
-                            class="px-4 py-2 rounded-lg font-medium transition-colors bg-gray-200 text-gray-700 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                            class="flex-1 sm:flex-none px-3 sm:px-4 py-3 sm:py-2 rounded-lg font-medium transition-colors bg-gray-200 text-gray-700 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mobile-touch-target text-sm sm:text-base"
                             aria-label="View right wall design with double hanging and shoe storage"
                             role="tab">
-                        👉 Right Wall
-                    </button>
+                        <span class="hidden sm:inline">👉 </span>Right Wall
+                </button>
                     <button onclick="showView('back-wall')" id="btn-back-wall" 
-                            class="px-4 py-2 rounded-lg font-medium transition-colors bg-gray-200 text-gray-700 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                            class="flex-1 sm:flex-none px-3 sm:px-4 py-3 sm:py-2 rounded-lg font-medium transition-colors bg-gray-200 text-gray-700 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mobile-touch-target text-sm sm:text-base"
                             aria-label="View back wall design with full-length hanging and accessories"
                             role="tab">
-                        ⬆️ Back Wall
-                    </button>
+                        <span class="hidden sm:inline">⬆️ </span>Back Wall
+                </button>
                 </div>
                 <button onclick="window.print()" 
-                        class="no-print px-4 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors"
+                        class="no-print px-4 py-3 sm:py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors mobile-touch-target text-sm sm:text-base"
                         aria-label="Print this design presentation">
-                    🖨️ Print Design
+                    <span class="hidden sm:inline">🖨️ </span>Print Design
                 </button>
+            </div>
+            
+            <!-- Mobile Navigation Hint -->
+            <div class="sm:hidden text-center text-xs text-slate-500 mb-4 mobile-spacing">
+                💡 Tap buttons above or swipe left/right to explore each wall design
             </div>
 
             <!-- Dimensions Summary -->
@@ -532,9 +562,11 @@
             activeButton.className = 'px-4 py-2 rounded-lg font-medium transition-colors bg-blue-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2';
             activeButton.setAttribute('aria-selected', 'true');
             
-            // Smooth scroll to top on mobile
+            // Smooth scroll to top on mobile with better positioning
             if (window.innerWidth <= 768) {
-                selectedView.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                setTimeout(() => {
+                    selectedView.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
             }
             
             // Analytics (if needed)
@@ -621,6 +653,50 @@
         
         // Initialize transitions
         addViewTransitions();
+        
+        // Touch gesture support for mobile swiping
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const views = ['floor', 'left-wall', 'right-wall', 'back-wall'];
+        let currentViewIndex = 1; // Start with left-wall
+        
+        function handleSwipe() {
+            if (window.innerWidth > 768) return; // Only on mobile
+            
+            const swipeThreshold = 100;
+            const swipeDistance = touchEndX - touchStartX;
+            
+            if (Math.abs(swipeDistance) > swipeThreshold) {
+                if (swipeDistance > 0 && currentViewIndex > 0) {
+                    // Swipe right - previous view
+                    currentViewIndex--;
+                    showView(views[currentViewIndex]);
+                } else if (swipeDistance < 0 && currentViewIndex < views.length - 1) {
+                    // Swipe left - next view
+                    currentViewIndex++;
+                    showView(views[currentViewIndex]);
+                }
+            }
+        }
+        
+        // Add touch event listeners to view content areas
+        document.querySelectorAll('.view-content').forEach(view => {
+            view.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            
+            view.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+        });
+        
+        // Update current view index when buttons are clicked
+        const originalShowView = window.showView;
+        window.showView = function(viewName) {
+            currentViewIndex = views.indexOf(viewName);
+            originalShowView(viewName);
+        };
         
         // Print functionality
         window.addEventListener('beforeprint', function() {
