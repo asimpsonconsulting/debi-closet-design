@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional walk-in closet design visualization with detailed specifications, measurements, and storage solutions for client review and contractor implementation.">
+    <meta name="keywords" content="closet design, walk-in closet, interior design, storage solutions, organization, custom closet">
+    <meta name="author" content="Professional Closet Design Services">
+    <meta property="og:title" content="Walk-in Closet Design - Client Presentation">
+    <meta property="og:description" content="Comprehensive closet design with interactive visualizations, detailed specifications, and contractor notes.">
+    <meta property="og:type" content="website">
+    <title>Walk-in Closet Design - Professional Presentation | Client Review</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+        @media print {
+            .no-print { display: none !important; }
+            .view-content { display: block !important; page-break-after: always; }
+            body { background: white !important; }
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        .shadow-elegant {
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08), 0 4px 6px rgba(15, 23, 42, 0.04);
+        }
+        .modern-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+        .modern-card:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+    <!-- Professional Header -->
+    <header class="bg-white border-b border-slate-200 py-6 mb-8 no-print">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <img src="ThinkSimpson.png" alt="ThinkSimpson Logo" class="h-12 w-auto">
+                    <div>
+                        <h1 class="text-2xl font-bold text-slate-800">Custom Closet Design</h1>
+                        <p class="text-slate-600">Thoughtful Space Solutions</p>
+                    </div>
+                </div>
+                <div class="text-right mt-4 md:mt-0">
+                    <p class="text-sm text-slate-700"><strong>Client:</strong> Debi Foley</p>
+                    <p class="text-sm text-slate-700"><strong>Project:</strong> Walk-in Closet Design</p>
+                    <p class="text-sm text-slate-700"><strong>Date:</strong> October 2025</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="app" class="w-full max-w-6xl mx-auto p-6">
+        <div class="bg-white rounded-xl shadow-elegant p-8 border border-slate-200">
+            <div class="flex flex-col md:flex-row justify-between items-start mb-6">
+                <div>
+                    <h2 class="text-3xl font-bold mb-2 text-slate-800">Walk-in Closet Design</h2>
+                    <p class="text-lg text-slate-600">8 Foot Ceilings • Premium Organization Solution</p>
+                </div>
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mt-4 md:mt-0">
+                    <p class="text-sm font-semibold text-blue-900">Project Status</p>
+                    <p class="text-sm text-blue-700">Ready for Client Review</p>
+                </div>
+            </div>
+            
+            <!-- View Selector -->
+            <div class="flex flex-col sm:flex-row gap-3 mb-6">
+                <div class="flex gap-3 flex-wrap flex-1">
+                    <button onclick="showView('floor')" id="btn-floor" 
+                            class="px-4 py-2 rounded-lg font-medium transition-colors bg-gray-200 text-gray-700 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                            aria-label="View floor plan diagram"
+                            role="tab">
+                        📐 Floor Plan
+                    </button>
+                    <button onclick="showView('left-wall')" id="btn-left-wall" 
+                            class="px-4 py-2 rounded-lg font-medium transition-colors bg-blue-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                            aria-label="View left wall design with shoes and jewelry storage"
+                            role="tab">
+                        👈 Left Wall
+                    </button>
+                    <button onclick="showView('right-wall')" id="btn-right-wall" 
+                            class="px-4 py-2 rounded-lg font-medium transition-colors bg-gray-200 text-gray-700 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                            aria-label="View right wall design with double hanging and shoe storage"
+                            role="tab">
+                        👉 Right Wall
+                    </button>
+                    <button onclick="showView('back-wall')" id="btn-back-wall" 
+                            class="px-4 py-2 rounded-lg font-medium transition-colors bg-gray-200 text-gray-700 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                            aria-label="View back wall design with full-length hanging and accessories"
+                            role="tab">
+                        ⬆️ Back Wall
+                    </button>
+                </div>
+                <button onclick="window.print()" 
+                        class="no-print px-4 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors"
+                        aria-label="Print this design presentation">
+                    🖨️ Print Design
+                </button>
+            </div>
+
+            <!-- Dimensions Summary -->
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-6">
+                <h3 class="font-semibold text-slate-800 mb-2">📏 Space Dimensions</h3>
+                <div class="grid grid-cols-2 gap-2 text-sm text-slate-700">
+                    <div>• Entry: <span class="font-medium text-blue-600">53 inches</span> wide</div>
+                    <div>• Depth: <span class="font-medium text-blue-600">124 inches</span></div>
+                    <div>• Width: <span class="font-medium text-blue-600">53″ → 71″</span> (expanding)</div>
+                    <div>• Ceiling: <span class="font-medium text-blue-600">8 feet</span> (96 inches)</div>
+                </div>
+            </div>
+
+            <!-- Floor Plan -->
+            <div id="view-floor" class="view-content bg-white border-2 border-gray-300 rounded-lg p-4 sm:p-8" style="display:none;" role="tabpanel" aria-labelledby="btn-floor">
+                <h3 class="text-lg font-bold mb-4 text-center">Floor Plan Overview</h3>
+                <svg width="600" height="550" viewBox="0 0 600 550" class="mx-auto max-w-full h-auto" 
+                     role="img" aria-labelledby="floor-plan-title floor-plan-desc">
+                    <title id="floor-plan-title">Walk-in Closet Floor Plan</title>
+                    <desc id="floor-plan-desc">Floor plan showing L-shaped closet layout with 53-inch entry, 124-inch total depth, expanding from 53 to 71 inches wide. Shows left wall, right wall, and back wall sections.</desc>
+                    <rect x="100" y="50" width="212" height="268" fill="#f5f5f0" stroke="#333" stroke-width="3" />
+                    <rect x="100" y="318" width="284" height="228" fill="#f5f5f0" stroke="#333" stroke-width="3" />
+                    
+                    <!-- Entry door -->
+                    <line x1="100" y1="50" x2="312" y2="50" stroke="#e63946" stroke-width="4" stroke-dasharray="8,4" />
+                    <text x="206" y="35" text-anchor="middle" fill="#e63946" font-weight="bold">ENTRY</text>
+                    
+                    <!-- Entry wall width -->
+                    <line x1="100" y1="25" x2="312" y2="25" stroke="#666" stroke-width="1" />
+                    <text x="206" y="20" text-anchor="middle" font-size="12" font-weight="bold">53"</text>
+                    
+                    <!-- Right wall depth -->
+                    <line x1="337" y1="50" x2="337" y2="546" stroke="#666" stroke-width="1" />
+                    <text x="352" y="300" text-anchor="middle" font-size="12" font-weight="bold" transform="rotate(90, 352, 300)">124"</text>
+                    
+                    <!-- First section depth -->
+                    <line x1="75" y1="50" x2="75" y2="318" stroke="#666" stroke-width="1" />
+                    <text x="60" y="184" text-anchor="middle" font-size="12" font-weight="bold" transform="rotate(90, 60, 184)">67"</text>
+                    
+                    <!-- Extension width -->
+                    <line x1="312" y1="333" x2="384" y2="333" stroke="#666" stroke-width="1" />
+                    <text x="348" y="328" text-anchor="middle" font-size="12" font-weight="bold">18"</text>
+                    
+                    <!-- Back section depth -->
+                    <line x1="75" y1="318" x2="75" y2="546" stroke="#666" stroke-width="1" />
+                    <text x="60" y="432" text-anchor="middle" font-size="12" font-weight="bold" transform="rotate(90, 60, 432)">57"</text>
+                    
+                    <!-- Back wall width -->
+                    <line x1="100" y1="565" x2="384" y2="565" stroke="#666" stroke-width="1" />
+                    <text x="242" y="560" text-anchor="middle" font-size="12" font-weight="bold">71"</text>
+                    
+                    <!-- Wall labels -->
+                    <text x="206" y="310" text-anchor="middle" font-size="11" font-weight="bold" fill="#333">LEFT WALL</text>
+                    <text x="320" y="184" text-anchor="middle" font-size="11" font-weight="bold" fill="#333" transform="rotate(90, 320, 184)">RIGHT WALL</text>
+                    <text x="242" y="540" text-anchor="middle" font-size="11" font-weight="bold" fill="#333">BACK WALL</text>
+                </svg>
+            </div>
+
+            <!-- Left Wall -->
+            <div id="view-left-wall" class="view-content bg-white border-2 border-gray-300 rounded-lg p-4 sm:p-8" role="tabpanel" aria-labelledby="btn-left-wall">
+                <h3 class="text-lg font-bold mb-4 text-center">LEFT WALL (40 inches wide)</h3>
+                <p class="text-sm text-gray-600 text-center mb-6">Shoes, workout wear, jewelry, and display</p>
+                <svg width="500" height="550" viewBox="0 0 500 550" class="mx-auto max-w-full h-auto" 
+                     role="img" aria-labelledby="left-wall-title left-wall-desc">
+                    <title id="left-wall-title">Left Wall Organization Design</title>
+                    <desc id="left-wall-desc">Vertical layout showing shoe storage at bottom, drawers and countertop in middle, jewelry display area, and open shelving for workout wear at top. Total height 96 inches.</desc>
+                    <rect x="80" y="50" width="340" height="384" fill="#f8f4f0" stroke="#333" stroke-width="3" />
+                    
+                    <rect x="80" y="50" width="340" height="144" fill="#f0f0f0" stroke="#666" stroke-width="2" />
+                    <text x="250" y="35" text-anchor="middle" font-size="13" font-weight="bold">OPEN SHELVING (36 inches)</text>
+                    <line x1="80" y1="98" x2="420" y2="98" stroke="#999" stroke-width="2" />
+                    <line x1="80" y1="146" x2="420" y2="146" stroke="#999" stroke-width="2" />
+                    
+                    <text x="250" y="78" text-anchor="middle" font-size="11" font-weight="bold">Out-of-Season Shoes (12 inch shelf)</text>
+                    <text x="250" y="126" text-anchor="middle" font-size="11" font-weight="bold">Workout Tops (12 inch shelf)</text>
+                    <text x="250" y="174" text-anchor="middle" font-size="11" font-weight="bold">Leggings (12 inch shelf)</text>
+                    
+                    <rect x="80" y="194" width="340" height="48" fill="#f0f0f0" stroke="#666" stroke-width="2" />
+                    <text x="250" y="217" text-anchor="middle" font-size="12" font-weight="bold">JEWELRY SHELF (12 inches)</text>
+                    <text x="250" y="232" text-anchor="middle" font-size="10" fill="#666">Organizers for rings, watches, bracelets, earrings</text>
+                    
+                    <rect x="80" y="242" width="340" height="48" fill="#c9b8a8" stroke="#8b7355" stroke-width="2" />
+                    <text x="250" y="262" text-anchor="middle" font-size="12" font-weight="bold">WALL DISPLAY (12 inches)</text>
+                    <text x="250" y="277" text-anchor="middle" font-size="10" fill="#666">Gold hooks for necklaces</text>
+                    <circle cx="140" cy="257" r="3" fill="#d4af37" />
+                    <circle cx="200" cy="257" r="3" fill="#d4af37" />
+                    <circle cx="260" cy="257" r="3" fill="#d4af37" />
+                    <circle cx="320" cy="257" r="3" fill="#d4af37" />
+                    
+                    <rect x="80" y="290" width="340" height="48" fill="#e8d5c4" stroke="#8b7355" stroke-width="2" />
+                    <text x="250" y="310" text-anchor="middle" font-size="13" font-weight="bold">COUNTERTOP (12 inches)</text>
+                    <text x="250" y="327" text-anchor="middle" font-size="11" fill="#666">White quartz - jewelry tray on top</text>
+                    
+                    <rect x="80" y="338" width="340" height="48" fill="#e8d5c4" stroke="#8b7355" stroke-width="2" />
+                    <text x="250" y="358" text-anchor="middle" font-size="12" font-weight="bold">DRAWERS (12 inches)</text>
+                    <text x="250" y="375" text-anchor="middle" font-size="10" fill="#666">Sports bras, socks, accessories</text>
+                    <line x1="100" y1="356" x2="380" y2="356" stroke="#8b7355" stroke-width="1" />
+                    <circle cx="360" cy="356" r="4" fill="#d4af37" />
+                    
+                    <rect x="80" y="386" width="340" height="48" fill="#c9b8a8" stroke="#8b7355" stroke-width="2" />
+                    <text x="250" y="405" text-anchor="middle" font-size="12" font-weight="bold">TENNIS SHOE SHELVES (12 inches)</text>
+                    <text x="250" y="420" text-anchor="middle" font-size="10" fill="#666">Angled shelves for tennis shoes</text>
+                    
+                    <text x="50" y="55" font-size="10" fill="#666">96 in</text>
+                    <text x="50" y="147" font-size="10" fill="#666">60 in</text>
+                    <text x="50" y="219" font-size="10" fill="#666">48 in</text>
+                    <text x="50" y="267" font-size="10" fill="#666">36 in</text>
+                    <text x="50" y="315" font-size="10" fill="#666">24 in</text>
+                    <text x="50" y="363" font-size="10" fill="#666">12 in</text>
+                    <text x="50" y="439" font-size="10" fill="#666">0 in</text>
+                </svg>
+                <div class="mt-4 p-3 bg-blue-50 rounded-lg">
+                    <p class="text-sm text-blue-900"><strong>📐 Bottom to Top:</strong> Tennis shoe shelves → Drawers (sports bras/socks) → Countertop → Wall display → Jewelry shelf → Leggings → Workout tops → Out-of-season shoes</p>
+                </div>
+            </div>
+
+            <!-- Right Wall -->
+            <div id="view-right-wall" class="view-content bg-white border-2 border-gray-300 rounded-lg p-4 sm:p-8" style="display:none;" role="tabpanel" aria-labelledby="btn-right-wall">
+                <h3 class="text-lg font-bold mb-4 text-center">RIGHT WALL (124 inches deep × 53 inches wide)</h3>
+                <p class="text-sm text-gray-600 text-center mb-6">Double hanging with high shelf for out-of-season shoes, plus shoe storage</p>
+                <svg width="1100" height="550" viewBox="0 0 1100 550" class="mx-auto max-w-full h-auto overflow-x-auto" 
+                     role="img" aria-labelledby="right-wall-title right-wall-desc">
+                    <title id="right-wall-title">Right Wall Double Hang and Shoe Storage</title>
+                    <desc id="right-wall-desc">124-inch deep wall with double hanging section (50 inches), tennis shoe storage (24 inches), boot storage (24 inches), and bootie storage (26 inches). Two hanging rods at 72 and 42 inches high.</desc>
+                    <rect x="50" y="50" width="992" height="384" fill="#f8f4f0" stroke="#333" stroke-width="3" />
+                    
+                    <rect x="50" y="50" width="400" height="384" fill="#f0f0f0" stroke="#666" stroke-width="2" />
+                    <text x="250" y="75" text-anchor="middle" font-size="14" font-weight="bold">DOUBLE HANG SECTION</text>
+                    <text x="250" y="95" text-anchor="middle" font-size="11" fill="#666">Top High Shelf: Out-of-Season Shoes (72-96 inches)</text>
+                    
+                    <line x1="50" y1="170" x2="450" y2="170" stroke="#d4af37" stroke-width="4" />
+                    <circle cx="250" cy="170" r="5" fill="#d4af37" />
+                    <text x="250" y="125" text-anchor="middle" font-size="11" font-weight="bold">Tops Rod (72 inches high)</text>
+                    <text x="250" y="140" text-anchor="middle" font-size="9" fill="#666">Extends wall to wall</text>
+                    
+                    <text x="125" y="210" text-anchor="middle" font-size="9" fill="#8b7355">hanging clothes</text>
+                    <text x="250" y="210" text-anchor="middle" font-size="9" fill="#8b7355">hanging clothes</text>
+                    <text x="375" y="210" text-anchor="middle" font-size="9" fill="#8b7355">hanging clothes</text>
+                    
+                    <line x1="50" y1="314" x2="450" y2="314" stroke="#d4af37" stroke-width="4" />
+                    <circle cx="250" cy="314" r="5" fill="#d4af37" />
+                    <text x="250" y="285" text-anchor="middle" font-size="11" font-weight="bold">Bottoms Rod (42 inches high)</text>
+                    <text x="250" y="300" text-anchor="middle" font-size="9" fill="#666">Extends wall to wall</text>
+                    
+                    <text x="125" y="355" text-anchor="middle" font-size="9" fill="#8b7355">pants / skirts</text>
+                    <text x="250" y="355" text-anchor="middle" font-size="9" fill="#8b7355">pants / skirts</text>
+                    <text x="375" y="355" text-anchor="middle" font-size="9" fill="#8b7355">pants / skirts</text>
+                    
+                    <text x="250" y="455" text-anchor="middle" font-size="11" font-weight="bold">50 inches wide</text>
+                    
+                    <rect x="450" y="50" width="192" height="384" fill="#c9b8a8" stroke="#8b7355" stroke-width="2" />
+                    <text x="546" y="80" text-anchor="middle" font-size="13" font-weight="bold">TENNIS SHOES</text>
+                    <text x="546" y="100" text-anchor="middle" font-size="11" fill="#666">(12-14 pairs)</text>
+                    <text x="546" y="120" text-anchor="middle" font-size="10" fill="#666">Angled shelves</text>
+                    <text x="546" y="455" text-anchor="middle" font-size="11" font-weight="bold">24 inches wide</text>
+                    
+                    <rect x="642" y="50" width="192" height="384" fill="#c9b8a8" stroke="#8b7355" stroke-width="2" />
+                    <text x="738" y="80" text-anchor="middle" font-size="13" font-weight="bold">BOOTS</text>
+                    <text x="738" y="100" text-anchor="middle" font-size="11" fill="#666">(6 pairs)</text>
+                    <text x="738" y="120" text-anchor="middle" font-size="10" fill="#666">Tall shelves</text>
+                    <text x="738" y="455" text-anchor="middle" font-size="11" font-weight="bold">24 inches wide</text>
+                    
+                    <rect x="834" y="50" width="208" height="384" fill="#c9b8a8" stroke="#8b7355" stroke-width="2" />
+                    <text x="938" y="80" text-anchor="middle" font-size="13" font-weight="bold">BOOTIES</text>
+                    <text x="938" y="100" text-anchor="middle" font-size="11" fill="#666">(8-10 pairs)</text>
+                    <text x="938" y="120" text-anchor="middle" font-size="10" fill="#666">Angled shelves</text>
+                    <text x="938" y="455" text-anchor="middle" font-size="11" font-weight="bold">26 inches wide</text>
+                    
+                    <text x="25" y="60" font-size="10" fill="#666">96 in</text>
+                    <text x="25" y="175" font-size="10" fill="#666">72 in</text>
+                    <text x="25" y="319" font-size="10" fill="#666">42 in</text>
+                    <text x="25" y="439" font-size="10" fill="#666">0 in</text>
+                </svg>
+                <div class="mt-4 p-3 bg-green-50 rounded-lg">
+                    <p class="text-sm text-green-900"><strong>✅ Section widths:</strong> Double hang (50 in) • Tennis shoes (24 in) • Boots (24 in) • Booties (26 in) = 124 inches total depth</p>
+                </div>
+            </div>
+
+            <!-- Back Wall -->
+            <div id="view-back-wall" class="view-content bg-white border-2 border-gray-300 rounded-lg p-4 sm:p-8" style="display:none;" role="tabpanel" aria-labelledby="btn-back-wall">
+                <h3 class="text-lg font-bold mb-4 text-center">BACK WALL (71 inches wide)</h3>
+                <p class="text-sm text-gray-600 text-center mb-6">Full-length hanging, shoes, t-shirts, purses, bags with hamper, and double hang</p>
+                <svg width="900" height="550" viewBox="0 0 900 550" class="mx-auto max-w-full h-auto" 
+                     role="img" aria-labelledby="back-wall-title back-wall-desc">
+                    <title id="back-wall-title">Back Wall Storage Solutions</title>
+                    <desc id="back-wall-desc">71-inch wide back wall with full-length hanging (27 inches), sandals and dress shoe storage (15 inches), bag hooks and hamper (12 inches), and second double hang section (17 inches).</desc>
+                    <rect x="50" y="50" width="800" height="384" fill="#f8f4f0" stroke="#333" stroke-width="3" />
+                    
+                    <!-- Full-length hanging - 27 inches -->
+                    <rect x="50" y="50" width="304" height="384" fill="#f0f0f0" stroke="#666" stroke-width="2" />
+                    <line x1="50" y1="146" x2="354" y2="146" stroke="#d4af37" stroke-width="4" />
+                    <circle cx="202" cy="146" r="5" fill="#d4af37" />
+                    <text x="202" y="100" text-anchor="middle" font-size="14" font-weight="bold">FULL-LENGTH</text>
+                    <text x="202" y="120" text-anchor="middle" font-size="14" font-weight="bold">HANGING</text>
+                    <text x="202" y="135" text-anchor="middle" font-size="11" fill="#666">Rod at 72 inches</text>
+                    <text x="202" y="190" text-anchor="middle" font-size="10" fill="#666">Dresses, coats, long items</text>
+                    <text x="202" y="455" text-anchor="middle" font-size="11" font-weight="bold">27 inches wide</text>
+                    
+                    <!-- Sandals/dress shoes - 15 inches -->
+                    <rect x="354" y="50" width="169" height="240" fill="#c9b8a8" stroke="#8b7355" stroke-width="2" />
+                    <text x="438" y="85" text-anchor="middle" font-size="13" font-weight="bold">SANDALS &amp;</text>
+                    <text x="438" y="105" text-anchor="middle" font-size="13" font-weight="bold">DRESS SHOES</text>
+                    <text x="438" y="125" text-anchor="middle" font-size="11" fill="#666">(12-15 pairs)</text>
+                    <text x="438" y="145" text-anchor="middle" font-size="10" fill="#666">Angled shelves</text>
+                    
+                    <!-- T-shirts shelf - 15 inches -->
+                    <rect x="354" y="290" width="169" height="72" fill="#f0f0f0" stroke="#666" stroke-width="2" />
+                    <text x="438" y="320" text-anchor="middle" font-size="13" font-weight="bold">T-SHIRTS</text>
+                    <text x="438" y="340" text-anchor="middle" font-size="10" fill="#666">Open shelves for folded tees</text>
+                    
+                    <!-- Purses and bags - 15 inches -->
+                    <rect x="354" y="362" width="169" height="72" fill="#e8d5c4" stroke="#8b7355" stroke-width="2" />
+                    <text x="438" y="392" text-anchor="middle" font-size="13" font-weight="bold">PURSES &amp; BAGS</text>
+                    <text x="438" y="412" text-anchor="middle" font-size="10" fill="#666">Open shelves</text>
+                    <text x="438" y="455" text-anchor="middle" font-size="11" font-weight="bold">15 inches wide</text>
+                    
+                    <!-- Large bag hooks - 12 inches -->
+                    <rect x="523" y="50" width="135" height="180" fill="#f5f5f0" stroke="#666" stroke-width="2" />
+                    <circle cx="555" cy="110" r="6" fill="#d4af37" stroke="#333" stroke-width="1" />
+                    <circle cx="590" cy="110" r="6" fill="#d4af37" stroke="#333" stroke-width="1" />
+                    <circle cx="625" cy="110" r="6" fill="#d4af37" stroke="#333" stroke-width="1" />
+                    <text x="590" y="85" text-anchor="middle" font-size="12" font-weight="bold">Large Bags</text>
+                    <text x="590" y="155" text-anchor="middle" font-size="10" fill="#666">Gold hooks</text>
+                    <text x="590" y="175" text-anchor="middle" font-size="9" fill="#999">Backpacks, totes</text>
+                    
+                    <!-- Stand-up hamper below - 12 inches -->
+                    <rect x="523" y="230" width="135" height="204" fill="#b8a898" stroke="#8b7355" stroke-width="2" />
+                    <text x="590" y="310" text-anchor="middle" font-size="13" font-weight="bold">HAMPER</text>
+                    <text x="590" y="330" text-anchor="middle" font-size="11" fill="#666">Stand-up style</text>
+                    <text x="590" y="350" text-anchor="middle" font-size="10" fill="#999">Below large bag hooks</text>
+                    <text x="590" y="455" text-anchor="middle" font-size="11" font-weight="bold">12 inches wide</text>
+                    
+                    <!-- Second double hang - 17 inches -->
+                    <rect x="658" y="50" width="192" height="384" fill="#f0f0f0" stroke="#666" stroke-width="2" />
+                    <text x="754" y="80" text-anchor="middle" font-size="14" font-weight="bold">DOUBLE HANG</text>
+                    <line x1="658" y1="146" x2="850" y2="146" stroke="#d4af37" stroke-width="4" />
+                    <circle cx="754" cy="146" r="5" fill="#d4af37" />
+                    <text x="754" y="110" text-anchor="middle" font-size="12" font-weight="bold">TOPS (72 inches)</text>
+                    <line x1="658" y1="290" x2="850" y2="290" stroke="#d4af37" stroke-width="4" />
+                    <circle cx="754" cy="290" r="5" fill="#d4af37" />
+                    <text x="754" y="255" text-anchor="middle" font-size="12" font-weight="bold">PANTS (42 inches)</text>
+                    <text x="754" y="455" text-anchor="middle" font-size="11" font-weight="bold">17 inches wide</text>
+                </svg>
+                <div class="mt-4 p-3 bg-purple-50 rounded-lg">
+                    <p class="text-sm text-purple-900"><strong>✅ Reorganized:</strong> T-shirts moved from left wall. Purses moved up. Stand-up hamper below large bag hooks!</p>
+                    <p class="text-sm text-purple-900 mt-2"><strong>📐 Exact Widths:</strong> Full-length hanging (27") + Shoes/T-shirts/Purses (15") + Bags/Hamper (12") + Double hang (17") = <strong>71 inches total</strong></p>
+                </div>
+            </div>
+
+            <!-- Technical Specifications -->
+            <div class="mt-8 bg-teal-50 border border-teal-200 rounded-xl p-6">
+                <h3 class="text-xl font-bold text-teal-900 mb-4">🔧 Technical Specifications & Materials</h3>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-teal-800 mb-3">Cabinet Materials & Finishes</h4>
+                        <div class="space-y-2 text-sm text-teal-700">
+                            <p><strong>Cabinet Boxes:</strong> 3/4" plywood with white melamine interior</p>
+                            <p><strong>Shelving:</strong> 3/4" plywood with white edge banding</p>
+                            <p><strong>Drawer Boxes:</strong> Soft-close undermount slides, full extension</p>
+                            <p><strong>Doors:</strong> Shaker style, white painted finish</p>
+                            <p><strong>Countertop:</strong> White quartz, 1.25" thick, polished edge</p>
+                            <p><strong>Back Panels:</strong> 1/4" white melamine</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold text-teal-800 mb-3">Hardware & Accessories</h4>
+                        <div class="space-y-2 text-sm text-teal-700">
+                            <p><strong>Handles:</strong> Brushed gold bar pulls, 5" centers</p>
+                            <p><strong>Hanging Rods:</strong> Heavy-duty chrome, 1.25" diameter</p>
+                            <p><strong>Hooks:</strong> Brushed gold wall hooks for necklaces/bags</p>
+                            <p><strong>Shoe Shelves:</strong> Slanted wire shelves, white coating</p>
+                            <p><strong>Jewelry Inserts:</strong> Velvet-lined organizer trays</p>
+                            <p><strong>Lighting:</strong> LED strip under-cabinet, warm white 3000K</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contractor Installation Notes -->
+            <div class="mt-6 bg-rose-50 border border-rose-200 rounded-xl p-6">
+                <h3 class="text-lg font-bold text-rose-900 mb-4">⚠️ Contractor Installation Requirements</h3>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-rose-800 mb-3">Electrical Requirements</h4>
+                        <ul class="space-y-1 text-sm text-rose-700">
+                            <li>• Install 20-amp dedicated circuit for lighting</li>
+                            <li>• Add GFCI outlet inside closet for future electronics</li>
+                            <li>• LED strip wiring with wall switch by entry</li>
+                            <li>• Consider motion sensor activation</li>
+                        </ul>
+                        
+                        <h4 class="font-semibold text-rose-800 mb-3 mt-4">Structural Notes</h4>
+                        <ul class="space-y-1 text-sm text-rose-700">
+                            <li>• Locate wall studs for heavy-duty mounting</li>
+                            <li>• Install blocking for hanging rod supports</li>
+                            <li>• Check floor level - may need shimming</li>
+                            <li>• Verify ceiling height accuracy (96" shown)</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold text-rose-800 mb-3">Installation Sequence</h4>
+                        <ol class="space-y-1 text-sm text-rose-700 list-decimal list-inside">
+                            <li>Electrical rough-in and inspection</li>
+                            <li>Install and anchor all cabinetry</li>
+                            <li>Install countertop with template</li>
+                            <li>Mount hanging rods and brackets</li>
+                            <li>Install lighting and electrical finish</li>
+                            <li>Add drawer organizers and accessories</li>
+                            <li>Final inspection and touch-ups</li>
+                        </ol>
+                        
+                        <h4 class="font-semibold text-rose-800 mb-3 mt-4">Measurements to Verify</h4>
+                        <ul class="space-y-1 text-sm text-rose-700">
+                            <li>• Entry width: 53" (confirm clearance)</li>
+                            <li>• Total depth: 124" (wall to wall)</li>
+                            <li>• Ceiling height: 96" (confirm exact)</li>
+                            <li>• Extension width: 18" (back section)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Summary -->
+            <div class="mt-6 grid md:grid-cols-3 gap-6">
+                <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-6 modern-card">
+                    <h3 class="font-bold text-indigo-900 mb-3 text-lg">✨ Design Elements</h3>
+                    <ul class="space-y-2 text-sm text-indigo-800">
+                        <li>• Clean white cabinetry with modern lines</li>
+                        <li>• Brushed gold hardware accents</li>
+                        <li>• Premium white quartz countertop</li>
+                        <li>• Integrated LED lighting system</li>
+                    </ul>
+                </div>
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-6 modern-card">
+                    <h3 class="font-bold text-blue-900 mb-3 text-lg">📏 Storage Capacity</h3>
+                    <ul class="space-y-2 text-sm text-blue-800">
+                        <li>• 2 double-hang sections (67" total width)</li>
+                        <li>• 1 full-length hanging (27" wide)</li>
+                        <li>• Storage for <strong>48+ pairs</strong> of shoes</li>
+                        <li>• 12+ shelves with optimal spacing</li>
+                    </ul>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-6 modern-card">
+                    <h3 class="font-bold text-emerald-900 mb-3 text-lg">💎 Premium Features</h3>
+                    <ul class="space-y-2 text-sm text-emerald-800">
+                        <li>• Dedicated jewelry counter & storage</li>
+                        <li>• Elegant necklace display wall</li>
+                        <li>• Custom purse shelving + hooks</li>
+                        <li>• Integrated hamper solution</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Project Timeline (Non-Financial) -->
+            <div class="mt-6 bg-slate-50 border border-slate-200 rounded-xl p-6">
+                <h3 class="text-xl font-bold text-slate-800 mb-4">📅 Project Timeline</h3>
+                
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-3 font-bold">1</div>
+                        <h4 class="font-semibold text-slate-700 mb-2">Design Review</h4>
+                        <p class="text-sm text-slate-600">Final approval and refinements</p>
+                        <p class="text-xs text-blue-600 font-medium mt-1">1 week</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-3 font-bold">2</div>
+                        <h4 class="font-semibold text-slate-700 mb-2">Material Sourcing</h4>
+                        <p class="text-sm text-slate-600">Premium materials ordered and prepared</p>
+                        <p class="text-xs text-blue-600 font-medium mt-1">3-4 weeks</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-3 font-bold">3</div>
+                        <h4 class="font-semibold text-slate-700 mb-2">Installation</h4>
+                        <p class="text-sm text-slate-600">Professional installation and setup</p>
+                        <p class="text-xs text-blue-600 font-medium mt-1">3-5 days</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center mx-auto mb-3 font-bold">✓</div>
+                        <h4 class="font-semibold text-slate-700 mb-2">Final Details</h4>
+                        <p class="text-sm text-slate-600">Organization setup and walkthrough</p>
+                        <p class="text-xs text-green-600 font-medium mt-1">1-2 days</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <p class="text-lg font-semibold text-slate-700">Total Project Duration: <span class="text-blue-600">5-7 weeks</span></p>
+                    <p class="text-sm text-slate-500 mt-1">From design approval to move-in ready</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showView(viewName) {
+            // Hide all views
+            const views = document.querySelectorAll('.view-content');
+            views.forEach(view => {
+                view.style.display = 'none';
+                view.setAttribute('aria-hidden', 'true');
+            });
+            
+            // Show selected view
+            const selectedView = document.getElementById('view-' + viewName);
+            selectedView.style.display = 'block';
+            selectedView.setAttribute('aria-hidden', 'false');
+            
+            // Update button styles and aria states
+            const buttons = document.querySelectorAll('button[id^="btn-"]');
+            buttons.forEach(btn => {
+                btn.className = 'px-4 py-2 rounded-lg font-medium transition-colors bg-gray-200 text-gray-700 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2';
+                btn.setAttribute('aria-selected', 'false');
+            });
+            
+            const activeButton = document.getElementById('btn-' + viewName);
+            activeButton.className = 'px-4 py-2 rounded-lg font-medium transition-colors bg-blue-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2';
+            activeButton.setAttribute('aria-selected', 'true');
+            
+            // Smooth scroll to top on mobile
+            if (window.innerWidth <= 768) {
+                selectedView.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            
+            // Analytics (if needed)
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'view_change', {
+                    'custom_parameter': viewName
+                });
+            }
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.target.tagName === 'BUTTON' && e.target.id.startsWith('btn-')) {
+                const buttons = Array.from(document.querySelectorAll('button[id^="btn-"]'));
+                const currentIndex = buttons.indexOf(e.target);
+                let nextIndex;
+                
+                switch(e.key) {
+                    case 'ArrowRight':
+                    case 'ArrowDown':
+                        e.preventDefault();
+                        nextIndex = (currentIndex + 1) % buttons.length;
+                        buttons[nextIndex].focus();
+                        break;
+                    case 'ArrowLeft':
+                    case 'ArrowUp':
+                        e.preventDefault();
+                        nextIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+                        buttons[nextIndex].focus();
+                        break;
+                    case 'Home':
+                        e.preventDefault();
+                        buttons[0].focus();
+                        break;
+                    case 'End':
+                        e.preventDefault();
+                        buttons[buttons.length - 1].focus();
+                        break;
+                }
+            }
+        });
+        
+        // Initialize with left-wall view
+        window.addEventListener('load', function() {
+            showView('left-wall');
+            
+            // Set up proper ARIA attributes
+            const tabContainer = document.querySelector('.flex.flex-col.sm\\:flex-row');
+            if (tabContainer) {
+                tabContainer.setAttribute('role', 'tablist');
+                tabContainer.setAttribute('aria-label', 'Closet design views');
+            }
+            
+            // Lazy load images/content if needed
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('loaded');
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.view-content').forEach(view => {
+                observer.observe(view);
+            });
+        });
+        
+        // Add smooth transitions when switching views
+        function addViewTransitions() {
+            const style = document.createElement('style');
+            style.textContent = `
+                .view-content {
+                    transition: opacity 0.3s ease-in-out;
+                }
+                .view-content[style*="display: none"] {
+                    opacity: 0;
+                }
+                .view-content:not([style*="display: none"]) {
+                    opacity: 1;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // Initialize transitions
+        addViewTransitions();
+        
+        // Print functionality
+        window.addEventListener('beforeprint', function() {
+            // Show all views for printing
+            document.querySelectorAll('.view-content').forEach(view => {
+                view.style.display = 'block';
+            });
+        });
+        
+        window.addEventListener('afterprint', function() {
+            // Restore view state after printing
+            showView(document.querySelector('button[aria-selected="true"]').id.replace('btn-', ''));
+        });
+    </script>
+</body>
+</html>
